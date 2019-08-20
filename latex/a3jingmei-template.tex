@@ -1,0 +1,60 @@
+\documentclass[10pt,twoside,twocolumn]{ctexart} 
+\usepackage[a3paper,hmargin={4.5cm,1cm},vmargin={1.5cm,1.5cm},footskip=0.75cm, headsep=.75cm,landscape]{geometry} 
+\usepackage{amsmath,amsthm,amscd,amssymb,graphicx,comment,enumerate,ifthen,multicol,calc,refcount}%引用包列表 
+\usepackage{fancyhdr,latex/examanswersheetv2} 
+\pagestyle{fancy} 
+\renewcommand\baselinestretch{1.5} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand\Roman[1]{%每个模板必须定义 
+\textup{\uppercase\expandafter{\romannumeral#1}} 
+} 
+\newcommand\nameline{} 
+\newcommand\mylength{0em} 
+\newif\ifshowzongfenlan%每个模板必须定义 
+\showzongfenlantrue%每个模板必须定义 
+\newsavebox{\zdxa} 
+\newsavebox{\zdxb} 
+\sbox{\zdxa}{
+\large
+单位\raisebox{-2pt}{\rule{35mm}{0.4pt}}%
+专业\raisebox{-2pt}{\rule{35mm}{0.4pt}}%
+姓名\raisebox{-2pt}{\rule{35mm}{0.4pt}}%
+职务\raisebox{-2pt}{\rule{35mm}{0.4pt}}%
+座号\raisebox{-2pt}{\rule{35mm}{0.4pt}}
+}
+\sbox{\zdxb}{\large%
+........................................................................\raisebox{-0.5ex}{密}%
+...........................................\raisebox{-0.5ex}{封}%
+...........................................\raisebox{-0.5ex}{线}%
+........................................................................}
+\fancyfoot[OL,ER]{
+    \begin{picture}(1,1)
+        \ifnum\value{page}<2
+            \put(-95,400){\rotatebox[origin=c]{90}{\usebox{\zdxa}}}
+        \fi
+        \put(-25,400){\rotatebox[origin=c]{90}{\usebox{\zdxb}}}
+    \end{picture}}
+\fancyfoot[CE,CO]{\kaishu{}
+第~\the\numexpr2*\value{page}-1\relax~页~~共~\number\numexpr2*\getpagerefnumber{mylastpage}\relax~页
+\hspace*{.5\linewidth}
+第~\the\numexpr2*\value{page}\relax~页~~共~\number\numexpr2*\getpagerefnumber{mylastpage}\relax~页
+}
+\fancyhead[OC]{
+    \raisebox{4ex}{
+        \begin{tabular}{|c|c|cc}\hline
+            \raisebox{-1.5ex}{座号} &\rule[-2pt]{.75cm}{0pt}\\
+            [5mm]\hline
+        \end{tabular}
+    }
+}
+\fancyfoot[ER]{
+    \begin{picture}(1,1)
+        \put(25,400){\rotatebox[origin=c]{-90}{\usebox{\zdxb}}}
+    \end{picture}
+}
+\setlength{\columnsep}{2cm}
+\newcommand\ansarea{\\ \\ \\ \\ \\ \\ \\ \\ ~\vfill}%每个模板必须定义
+
+\begin{document}
+$body$
+\end{document}

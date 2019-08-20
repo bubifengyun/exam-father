@@ -1,0 +1,102 @@
+```{r echo=FALSE} 
+source("_setup_mysql.R") 
+``` 
+
+\begin{center}\bs{} 
+\zihao{-2}{`r shijuan_info$paper_title`} 
+\kaishu\zihao{4}{`r shijuan_info$paper_subtitle`} 
+\end{center} 
+\nameline 
+\ifshowzongfenlan `r zongfenlan` \fi
+\newcounter{questioncounter} 
+\begin{enumerate} 
+\setlength\itemsep{\mylength} 
+
+\newcommand\hasTiankong{`r shijuan_info$tiankong_count`} 
+\ifnum\hasTiankong>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{填空题（每空`r shijuan_info$tiankong_perscore`分，`r tiankong_space_count`空，共`r shijuan_info$tiankong_perscore*tiankong_space_count`分）}}} 
+`r tiankong_show` 
+\fi
+
+\newcommand\hasXuanze{`r shijuan_info$xuanze_count`} 
+\ifnum\hasXuanze>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{选择题（每题`r shijuan_info$xuanze_perscore`分，`r shijuan_info$xuanze_count`题，共`r shijuan_info$xuanze_perscore*shijuan_info$xuanze_count`分）}}} 
+`r xuanze_show` 
+\fi 
+
+\newcommand\hasPanduan{`r shijuan_info$panduan_count`} 
+\ifnum\hasPanduan>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{判断题（每题`r shijuan_info$panduan_perscore`分，`r shijuan_info$panduan_count`题，共`r shijuan_info$panduan_perscore*shijuan_info$panduan_count`分）}}} 
+`r panduan_show` 
+\fi
+
+\newcommand\hasDuoxuan{`r shijuan_info$duoxuan_count`} 
+\ifnum\hasDuoxuan>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{多选题（每题`r shijuan_info$duoxuan_perscore`分，`r shijuan_info$duoxuan_count`题，共`r shijuan_info$duoxuan_perscore*shijuan_info$duoxuan_count`分）}}} 
+`r duoxuan_show` 
+\fi 
+
+\newcommand\hasJianda{`r shijuan_info$jianda_count`} 
+\ifnum\hasJianda>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{简答题（每题`r shijuan_info$jianda_perscore`分，`r shijuan_info$jianda_count`题，共`r shijuan_info$jianda_perscore*shijuan_info$jianda_count`分）}}} 
+`r jianda_show` 
+\fi
+
+\newcommand\hasZongshu{`r shijuan_info$zongshu_count`} 
+\ifnum\hasZongshu>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\dafenlan\zihao{4}{综述题（每题`r shijuan_info$zongshu_perscore`分，`r shijuan_info$zongshu_count`题，共`r shijuan_info$zongshu_perscore*shijuan_info$zongshu_count`分）}}} 
+`r zongshu_show` 
+\fi 
+
+\end{enumerate} 
+\label{mylastpage} 
+
+
+
+
+
+
+
+\clearpage 
+\pagestyle{empty} 
+\begin{center}\bs{} 
+\zihao{-2}{`r shijuan_info$paper_title`} 
+
+\kaishu\zihao{4}{`r shijuan_info$paper_subtitle`参考答案} 
+\end{center} 
+
+\setcounter{questioncounter}{0} 
+\begin{enumerate} 
+\setlength\itemsep{-0.5em} 
+
+\ifnum\hasTiankong>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{填空题（每空`r shijuan_info$tiankong_perscore`分，`r tiankong_space_count`空，共`r shijuan_info$tiankong_perscore*tiankong_space_count`分）}}} 
+`r tiankong_ans_show` 
+\fi
+
+\ifnum\hasXuanze>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{选择题（每题`r shijuan_info$xuanze_perscore`分，`r shijuan_info$xuanze_count`题，共`r shijuan_info$xuanze_perscore*shijuan_info$xuanze_count`分）}}} 
+`r xuanze_ans_show` 
+\fi 
+
+\ifnum\hasPanduan>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{判断题（每题`r shijuan_info$panduan_perscore`分，`r shijuan_info$panduan_count`题，共`r shijuan_info$panduan_perscore*shijuan_info$panduan_count`分）}}} 
+`r panduan_ans_show` 
+\fi 
+
+\ifnum\hasDuoxuan>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{多选题（每题`r shijuan_info$duoxuan_perscore`分，`r shijuan_info$duoxuan_count`题，共`r shijuan_info$duoxuan_perscore*shijuan_info$duoxuan_count`分）}}} 
+`r duoxuan_ans_show` 
+\fi
+
+\ifnum\hasJianda>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{简答题（每题`r shijuan_info$jianda_perscore`分，`r shijuan_info$jianda_count`题，共`r shijuan_info$jianda_perscore*shijuan_info$jianda_count`分）}}} 
+`r jianda_ans_show` 
+\fi 
+
+\ifnum\hasZongshu>0 
+\item[\textbf{\kaishu{}\zihao{4}{\stepcounter{questioncounter}\chinese{questioncounter}}} ]{\makebox[2mm][r]{、}\textbf{\kaishu\zihao{4}{综述题（每题`r shijuan_info$zongshu_perscore`分，`r shijuan_info$zongshu_count`题，共`r shijuan_info$zongshu_perscore*shijuan_info$zongshu_count`分）}}} 
+`r zongshu_ans_show` 
+\fi 
+
+\end{enumerate}

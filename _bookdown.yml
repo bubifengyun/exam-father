@@ -1,0 +1,4 @@
+book_filename: paper-template 
+rmd_subdir: TRUE 
+clean: [bib/book.bib, bib/packages.bib] 
+delete_merged_file: TRUE

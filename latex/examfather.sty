@@ -1,0 +1,122 @@
+\NeedsTeXFormat{LaTeX2e} 
+\ProvidesPackage{examfather}[2016/07/14;gyg;ZhengZhou] 
+
+\usepackage{amssymb,amsmath}
+\usepackage{fancyhdr} 
+\usepackage{tikz} 
+\usetikzlibrary{calc} 
+\usepackage{enumerate,multicol,enumitem}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{multirow} 
+\usepackage{lastpage} 
+\usepackage{graphicx,calc}
+
+%-----------------font----------------------- 
+\setCJKfamilyfont{STCaiyun}{STCaiyun} 
+\newcommand{\cy}{\CJKfamily{STCaiyun}} 
+\setCJKfamilyfont{fzxiaobiaosong}{AdobeSongStd-Light} 
+\newcommand{\bs}{\CJKfamily{fzxiaobiaosong}} 
+\setCJKfamilyfont{song}{SimSun} 
+\setCJKfamilyfont{newsong}{NSimSun} 
+\setCJKfamilyfont{fs}{FangSong_GB2312} 
+\setCJKfamilyfont{kai}{AdobeKaitiStd-Regular} 
+\setCJKfamilyfont{lishu}{LiSu} 
+\setCJKfamilyfont{youyuan}{YouYuan} 
+\newcommand{\song}{\CJKfamily{song}} % 宋体 
+\newcommand{\newsong}{\CJKfamily{newsong}} % 宋体 
+\newcommand{\fs}{\CJKfamily{fs}} % 仿宋体 
+\renewcommand{\kaishu}{\CJKfamily{kai}} % 楷体 
+\newcommand{\hei}{\CJKfamily{hei}} 
+\newcommand{\ls}{\CJKfamily{lishu}} % 隶书 
+\newcommand{\yy}{\CJKfamily{youyuan}} % 幼圆 % 
+\setCJKmainfont{STZhongsong}
+\setmainfont{Times New Roman}
+
+\renewcommand{\line}[1]{\rule[-3pt]{#1cm}{0.4pt}} 
+\newcommand{\kh}{(\rule[-2pt]{1cm}{0pt})} 
+\newcommand{\khans}[1]{(#1)}
+
+% 作者：夏栩笙 
+% 链接：http://www.zhihu.com/question/26414466/answer/32740927 
+% 来源：知乎 
+% 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 
+% 2019.08.20 对以上内容有所改动 
+
+\usepackage{ifthen} 
+\newlength{\la} 
+\newlength{\lb} 
+\newlength{\lc} 
+\newlength{\ld} 
+\newlength{\lhalf} 
+\newlength{\lquarter} 
+\newlength{\lmax}
+
+\newcommand{\xx}[4]{\hspace*{\fill}\kh\\[.5pt]
+\settowidth{\la}{~#1~~~} 
+\settowidth{\lb}{~#2~~~} 
+\settowidth{\lc}{~#3~~~} 
+\settowidth{\ld}{~#4~~~} 
+\ifthenelse{\lengthtest{\la>\lb}}{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}} 
+\ifthenelse{\lengthtest{\lc>\lmax}}{\setlength{\lmax}{\lc}}{} 
+\ifthenelse{\lengthtest{\ld>\lmax}}{\setlength{\lmax}{\ld}}{} 
+\setlength{\lhalf}{0.5\linewidth} 
+\setlength{\lquarter}{0.25\linewidth} 
+\ifthenelse{\lengthtest{\lmax>\lhalf}}{\noindent{}~#1 \\ ~#2 \\ ~#3 \\ ~#4}{ 
+    \ifthenelse{\lengthtest{\lmax>\lquarter}}{\noindent\makebox[\lhalf][l]{~#1~~~}%
+\makebox[\lhalf][l]{~#2~~~}\\\noindent%
+\makebox[\lhalf][l]{~#3~~~}%
+\makebox[\lhalf][l]{~#4~~~}}{\noindent\makebox[\lquarter][l]{~#1~~~}%
+\makebox[\lquarter][l]{~#2~~~}%
+\makebox[\lquarter][l]{~#3~~~}%
+\makebox[\lquarter][l]{~#4~~~}}}}
+
+\newcommand{\xxans}[5]{\hspace*{\fill}\khans{#5}\\[.5pt]% 
+\settowidth{\la}{~#1~~~} 
+\settowidth{\lb}{~#2~~~} 
+\settowidth{\lc}{~#3~~~} 
+\settowidth{\ld}{~#4~~~} 
+\ifthenelse{\lengthtest{\la>\lb}}{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}} 
+\ifthenelse{\lengthtest{\lc>\lmax}}{\setlength{\lmax}{\lc}}{} 
+\ifthenelse{\lengthtest{\ld>\lmax}}{\setlength{\lmax}{\ld}}{} 
+\setlength{\lhalf}{0.5\linewidth} 
+\setlength{\lquarter}{0.25\linewidth} 
+\ifthenelse{\lengthtest{\lmax>\lhalf}}{\noindent{}~#1 \\ ~#2 \\ ~#3 \\ ~#4}{ 
+    \ifthenelse{\lengthtest{\lmax>\lquarter}}{\noindent\makebox[\lhalf][l]{~#1~~~}% 
+\makebox[\lhalf][l]{~#2~~~}\\\noindent% 
+\makebox[\lhalf][l]{~#3~~~}% 
+\makebox[\lhalf][l]{~#4~~~}}{\noindent\makebox[\lquarter][l]{~#1~~~}% 
+\makebox[\lquarter][l]{~#2~~~}% 
+\makebox[\lquarter][l]{~#3~~~}% 
+\makebox[\lquarter][l]{~#4~~~}}}}
+
+\newcommand{\xxs}[4]{\hspace*{\fill}\kh\\[.5pt]% 
+\settowidth{\la}{~$#1$~~~} 
+\settowidth{\lb}{~$#2$~~~} 
+\settowidth{\lc}{~$#3$~~~} 
+\settowidth{\ld}{~$#4$~~~} 
+\ifthenelse{\lengthtest{\la>\lb}}{\setlength{\lmax}{\la}}{\setlength{\lmax}{\lb}} 
+\ifthenelse{\lengthtest{\lc>\lmax}}{\setlength{\lmax}{\lc}}{} 
+\ifthenelse{\lengthtest{\ld>\lmax}}{\setlength{\lmax}{\ld}}{} 
+\setlength{\lhalf}{0.5\linewidth} 
+\setlength{\lquarter}{0.25\linewidth} 
+\ifthenelse{\lengthtest{\lmax>\lhalf}}{\noindent{}~$#1$ \\ ~$#2$ \\ ~$#3$ \\ ~$#4$}{
+    \ifthenelse{\lengthtest{\lmax>\lquarter}}{\noindent\makebox[\lhalf][l]{~$#1$~~~}% 
+\makebox[\lhalf][l]{~$#2$~~~}\\\noindent% 
+\makebox[\lhalf][l]{~$#3$~~~}% 
+\makebox[\lhalf][l]{~$#4$~~~}}{\noindent\makebox[\lquarter][l]{~$#1$~~~}% 
+\makebox[\lquarter][l]{~$#2$~~~}% 
+\makebox[\lquarter][l]{~$#3$~~~}% 
+\makebox[\lquarter][l]{~$#4$~~~}}}}
+
+%--------------------页脚--- 
+\newcommand{\mifengxian}{
+    \geometry{b4paper,hmargin={2cm,2cm},vmargin={1cm,2.5cm},footskip=1.25cm,headsep=3cm} 
+    \pagestyle{fancy} 
+    \renewcommand{\headrulewidth}{0pt} 
+    \setlength{\columnseprule}{0.4pt} 
+    \fancyfoot[CE,CO]{第~\thepage{}~页~~共~\pageref{mylastpage}~页}
+}
+
+\endinput
+

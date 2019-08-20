@@ -1,0 +1,30 @@
+\documentclass[11pt,twoside]{ctexart}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{latex/examanswersheetv2,caption2,pifont,ulem}
+\renewcommand\Roman[1]{%每个模板必须定义
+    \textup{\uppercase\expandafter{\romannumeral#1}}
+}
+\newcommand\mylength{-0.5em}
+\renewcommand\dafenlan{}%每个模板必须定义
+\newif\ifshowzongfenlan%每个模板必须定义
+\showzongfenlanfalse%每个模板必须定义
+
+\mifengxian
+
+\newcommand\nameline{%每个模板必须定义
+    \begin{tikzpicture}[remember picture,overlay]
+        \path (current page.north) coordinate (a0);
+        \draw (a0)[shift={(0,-3)}] node (a1) [rotate=0,fill=gray!0,minimum height=1cm,minimum width=1cm]{\kaishu{}\zihao{4}
+            单位\raisebox{-2pt}{\rule{30mm}{0.4pt}}%
+            姓名\raisebox{-2pt}{\rule{30mm}{0.4pt}}%
+            职务\raisebox{-2pt}{\rule{30mm}{0.4pt}}%
+            成绩\raisebox{-2pt}{\rule{30mm}{0.4pt}}};
+    \end{tikzpicture}
+}
+
+\newcommand\ansarea{}%每个模板必须定义
+
+\begin{document}
+$body$
+\end{document}
